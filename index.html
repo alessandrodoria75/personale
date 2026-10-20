@@ -2,27 +2,29 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>I miei bookmarks</title>
 
 <style>
     :root {
-        --card-size: 190px;
+        --card-size: 140px;
     }
 
     * {
         box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
     }
 
     body {
         margin: 0;
         min-height: 100vh;
+        min-height: 100dvh;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        font-family: "Segoe UI", Arial, sans-serif;
+        justify-content: flex-start;
+        padding: 30px 15px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
         background:
             radial-gradient(circle at 15% 20%, rgba(255,255,255,.25), transparent 30%),
             radial-gradient(circle at 85% 80%, rgba(0,180,255,.25), transparent 35%),
@@ -46,10 +48,12 @@
     }
 
     h1 {
-        margin-bottom: 45px;
-        font-size: clamp(32px, 5vw, 52px);
-        letter-spacing: 3px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        font-size: clamp(26px, 5vw, 42px);
+        letter-spacing: 2px;
         font-weight: 800;
+        text-align: center;
         background: linear-gradient(90deg, #f6d365, #fda085, #f6d365);
         background-size: 200% auto;
         -webkit-background-clip: text;
@@ -67,26 +71,31 @@
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(4, var(--card-size));
-        grid-template-rows: repeat(3, var(--card-size));
-        gap: 38px;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 700px;
+        justify-items: center;
+        padding-bottom: 40px;
     }
 
     .bookmark {
         position: relative;
+        width: var(--card-size);
+        height: var(--card-size);
         background: rgba(255,255,255,.13);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border: 1px solid rgba(255,255,255,.28);
-        border-radius: 28px;
+        border-radius: 24px;
         display: flex;
         justify-content: center;
         align-items: center;
         text-decoration: none;
         box-shadow:
-            0 15px 35px rgba(0,0,0,.35),
+            0 10px 25px rgba(0,0,0,.3),
             inset 0 1px 1px rgba(255,255,255,.3);
-        transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+        transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
         overflow: hidden;
     }
 
@@ -96,61 +105,54 @@
         inset: 0;
         background: linear-gradient(135deg, rgba(255,255,255,.22), transparent 45%);
         opacity: .5;
+        pointer-events: none;
     }
 
-    .bookmark:hover {
-        transform: translateY(-10px) scale(1.06);
-        background: rgba(255,255,255,.24);
-        box-shadow: 0 25px 50px rgba(0,0,0,.5);
+    /* Gestione ottimizzata del tocco per iOS */
+    .bookmark:active {
+        transform: scale(0.94);
+        background: rgba(255,255,255,.25);
     }
 
     .bookmark img {
         position: relative;
         z-index: 1;
-        max-width: 105px;
-        max-height: 105px;
+        max-width: 75px;
+        max-height: 75px;
         object-fit: contain;
-        filter: drop-shadow(0 8px 12px rgba(0,0,0,.35));
-        transition: transform .3s ease;
-    }
-
-    .bookmark:hover img {
-        transform: scale(1.12);
+        filter: drop-shadow(0 6px 10px rgba(0,0,0,.3));
     }
 
     .bookmark span {
         position: relative;
         z-index: 1;
-        font-size: 16px;
+        font-size: 15px;
         text-align: center;
         color: white;
         font-weight: 700;
     }
 
-    @media (max-width: 650px) {
+    /* Media query mirate per schermi piccoli */
+    @media (max-width: 480px) {
         :root {
-            --card-size: 115px;
+            --card-size: 105px;
         }
-
         .grid {
-            gap: 18px;
+            gap: 15px;
         }
-
         .bookmark img {
-            max-width: 65px;
-            max-height: 65px;
+            max-width: 55px;
+            max-height: 55px;
         }
     }
 </style>
-
-<script type="text/javascript" nonce="b1cdad50ab744ae6b056d93a039" src="//local.adguard.org?ts=1789041969337&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_0000000066b881f5a303f6ac0215eeb5%26fn%3Dbookmarks_modificato.html%26cd%3Dattachment%26ts%3D496957%26p%3Dfs%26cid%3D1%26sig%3Dd9e3ea38d280c5e6ae9292f66452740323a927d9720142e639c71a51ef9c1879%26v%3D0&amp;app=com.apple.Safari&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="b1cdad50ab744ae6b056d93a039" src="//local.adguard.org?ts=1789041969337&amp;name=AdGuard%20Extra&amp;type=user-script"></script></head>
+</head>
 
 <body>
 
-<h1>I miei bookmarks !</h1>
+<h1>I miei bookmarks!</h1>
 
 <div class="grid">
-
     <!-- Prima riga -->
     <a class="bookmark" href="https://www.google.com" target="_blank" rel="noopener noreferrer">
         <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google">
@@ -202,8 +204,6 @@
     <a class="bookmark" href="https://www.amazon.it" target="_blank" rel="noopener noreferrer">
         <img src="amazon.png" alt="Amazon">
     </a>
-
-
 </div>
 
 </body>
