@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I miei bookmarks</title>
+
+<style>
+    :root {
+        --card-size: 190px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background:
+            radial-gradient(circle at 15% 20%, rgba(255,255,255,.25), transparent 30%),
+            radial-gradient(circle at 85% 80%, rgba(0,180,255,.25), transparent 35%),
+            linear-gradient(135deg, #101820, #243b55, #141e30);
+        color: white;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(120deg, transparent, rgba(255,255,255,.08), transparent);
+        animation: shine 8s infinite;
+        pointer-events: none;
+    }
+
+    @keyframes shine {
+        0%, 100% { transform: translateX(-100%); }
+        50% { transform: translateX(100%); }
+    }
+
+    h1 {
+        margin-bottom: 45px;
+        font-size: clamp(32px, 5vw, 52px);
+        letter-spacing: 3px;
+        font-weight: 800;
+        background: linear-gradient(90deg, #f6d365, #fda085, #f6d365);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 8px 25px rgba(0,0,0,.35);
+        animation: titleGlow 5s linear infinite;
+    }
+
+    @keyframes titleGlow {
+        to {
+            background-position: 200% center;
+        }
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, var(--card-size));
+        grid-template-rows: repeat(3, var(--card-size));
+        gap: 38px;
+    }
+
+    .bookmark {
+        position: relative;
+        background: rgba(255,255,255,.13);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255,255,255,.28);
+        border-radius: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        box-shadow:
+            0 15px 35px rgba(0,0,0,.35),
+            inset 0 1px 1px rgba(255,255,255,.3);
+        transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+        overflow: hidden;
+    }
+
+    .bookmark::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,.22), transparent 45%);
+        opacity: .5;
+    }
+
+    .bookmark:hover {
+        transform: translateY(-10px) scale(1.06);
+        background: rgba(255,255,255,.24);
+        box-shadow: 0 25px 50px rgba(0,0,0,.5);
+    }
+
+    .bookmark img {
+        position: relative;
+        z-index: 1;
+        max-width: 105px;
+        max-height: 105px;
+        object-fit: contain;
+        filter: drop-shadow(0 8px 12px rgba(0,0,0,.35));
+        transition: transform .3s ease;
+    }
+
+    .bookmark:hover img {
+        transform: scale(1.12);
+    }
+
+    .bookmark span {
+        position: relative;
+        z-index: 1;
+        font-size: 16px;
+        text-align: center;
+        color: white;
+        font-weight: 700;
+    }
+
+    @media (max-width: 650px) {
+        :root {
+            --card-size: 115px;
+        }
+
+        .grid {
+            gap: 18px;
+        }
+
+        .bookmark img {
+            max-width: 65px;
+            max-height: 65px;
+        }
+    }
+</style>
+
+<script type="text/javascript" nonce="b1cdad50ab744ae6b056d93a039" src="//local.adguard.org?ts=1789041969337&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_0000000066b881f5a303f6ac0215eeb5%26fn%3Dbookmarks_modificato.html%26cd%3Dattachment%26ts%3D496957%26p%3Dfs%26cid%3D1%26sig%3Dd9e3ea38d280c5e6ae9292f66452740323a927d9720142e639c71a51ef9c1879%26v%3D0&amp;app=com.apple.Safari&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="b1cdad50ab744ae6b056d93a039" src="//local.adguard.org?ts=1789041969337&amp;name=AdGuard%20Extra&amp;type=user-script"></script></head>
+
+<body>
+
+<h1>I miei bookmarks !</h1>
+
+<div class="grid">
+
+    <!-- Prima riga -->
+    <a class="bookmark" href="https://www.google.com" target="_blank" rel="noopener noreferrer">
+        <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google">
+    </a>
+
+    <a class="bookmark" href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
+    </a>
+
+    <a class="bookmark" href="https://www.hellobank.it" target="_blank" rel="noopener noreferrer">
+        <img src="hellobank-3.png" alt="HB">
+    </a>
+
+    <!-- Seconda riga -->
+    <a class="bookmark" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">
+        <img src="chatgpt.png" alt="ChatGPT">
+    </a>
+
+    <a class="bookmark" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer">
+        <img src="gemini.png" alt="Gemini">
+    </a>
+
+    <a class="bookmark" href="https://192.168.1.29" target="_blank" rel="noopener noreferrer">
+        <img src="qnap.png" alt="Qnap">
+    </a>
+
+    <!-- Terza riga -->
+    <a class="bookmark" href="https://192.168.1.1" target="_blank" rel="noopener noreferrer">
+        <img src="ZTE.png" alt="ZTE">
+    </a>
+
+    <a class="bookmark" href="http://192.168.1.29:32400" target="_blank" rel="noopener noreferrer">
+        <img src="plex.png" alt="Plex">
+    </a>
+
+    <a class="bookmark" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+    </a>
+
+    <!-- Quarta tessera riga finale -->
+    <a class="bookmark" href="https://www.vecchiasignora.com" target="_blank" rel="noopener noreferrer">
+        <img src="vs.png" alt="VS">
+    </a>
+
+    <a class="bookmark" href="https://forum.fibra.click" target="_blank" rel="noopener noreferrer">
+        <img src="fibraclick.png" alt="FibraClick">
+    </a>
+
+    <a class="bookmark" href="https://www.amazon.it" target="_blank" rel="noopener noreferrer">
+        <img src="amazon.png" alt="Amazon">
+    </a>
+
+
+</div>
+
+</body>
+</html>
